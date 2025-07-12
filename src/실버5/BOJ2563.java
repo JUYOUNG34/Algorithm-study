@@ -3,26 +3,36 @@ package 실버5;
 import java.util.Scanner;
 
 public class BOJ2563 {
+    static int N;
+    static int M;
+    static boolean V[];
+    static int S[];
+
     public static void main(String[] args) {
-        int D[][] = new int[101][101];
         Scanner sc = new Scanner(System.in);
-        int N = sc.nextInt();
-        for(int i=0; i<N; i++) {
-            int x = sc.nextInt();
-            int y = sc.nextInt();
-            for(int j=x; j<x+10; j++) {
-                for(int k=y; k<y+10; k++) {
-                    D[j][k] = 1;
-                }
+        N = sc.nextInt();
+        M = sc.nextInt();
+        V = new boolean[N];
+        S = new int[M];
+        backtracking(0);
+    }
+
+    private static void backtracking(int length) {
+        if(length == M){
+            for(int i=0; i<M; i++){
+                System.out.print(S[i]+1+" ");
             }
+            System.out.println();
+            return;
         }
 
-        int sum = 0;
-        for(int i=0; i<100; i++) {
-            for(int j=0; j<100; j++) {
-                if(D[i][j] == 1) sum++;
+        for(int i=0; i<N; i++){
+            if(!V[i]){
+                S[length] = i;
+                V[i] = true;
+                backtracking(length+1);
+                V[i] = false;
             }
         }
-        System.out.println(sum);
     }
 }
