@@ -8,7 +8,7 @@ public class BOJ1789 {
         long S = sc.nextLong();
         long sum = 0;
         long N = 1;
-        while (sum < S) {
+        while (sum <= S) {
             sum += N;
             N++;
         }
