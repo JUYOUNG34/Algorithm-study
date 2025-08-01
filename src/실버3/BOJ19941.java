@@ -1,9 +1,7 @@
 package 실버3;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.StringTokenizer;
+import java.io.*;
+import java.util.*;
 
 public class BOJ19941 {
     public static void main(String[] args) throws IOException {
@@ -16,8 +14,9 @@ public class BOJ19941 {
 
         for (int i = 0; i < N; i++) {
             if (text[i] == 'P') {
-                for (int j = i - K; j <= i + K; j++) {
-                    if (j < 0 || j >= N) continue;
+                int start = Math.max(i - K, 0);
+                int end = Math.min(i + K, N - 1);
+                for (int j = start; j <= end; j++) {
                     if (text[j] == 'H') {
                         count++;
                         text[j] = 'E';
@@ -26,6 +25,9 @@ public class BOJ19941 {
                 }
             }
         }
+
+        System.out.println(count);
     }
 }
+
 
